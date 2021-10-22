@@ -21,8 +21,6 @@ router.use('/login-failure' , (req , res ) =>{
 
 
 router.use('/login-success' , (req , res ) =>{
-  console.log(req.isAuthenticated)
-  console.log(req.session.passport.name  = "jai bheem")
   return res.send("you are succeeded") ; 
 })
 
