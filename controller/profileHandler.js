@@ -19,7 +19,7 @@ const fileUpload = multer({
     }
     })  
 
-// { profileImg , name , description}
+// { profilImg , name , description}
 
 const profileHandler = async (req ,res ,next) => {
     var {title , description} = req.body ; 
