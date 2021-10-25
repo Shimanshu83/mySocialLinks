@@ -12,6 +12,7 @@ const MongoStore =  require('connect-mongo');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var socialLinkRouter = require('./routes/socialLink')
 const {connectDB} = require('./database/connection');
 const {connection} = require('./database/connection');
 const { application } = require('express');
@@ -60,8 +61,10 @@ connectDB();
  
  
 
+ app.use('/' , socialLinkRouter);
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
