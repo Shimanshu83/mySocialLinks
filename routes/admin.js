@@ -2,14 +2,20 @@ var express = require('express');
 
 const isAuth = require('../controller/isAuth');
 const {profileHandler , fileUpload} = require('../controller/profileHandler');
-
+const {getLinks ,
+    createLink,  
+    updateLink , 
+    deleteLink } = require('../controller/linksController'); 
 
 var router = express.Router();
 
 router.post('/profile' , fileUpload.single('profileImage') ,profileHandler);
 
-router.post('/addlink',isAuth ,(req , res ) => {
-    res.send("you are in protected route");
-});
+router.get('/links',isAuth ,getLinks );
 
+router.post('/links',isAuth ,createLink );
+
+router.put('/links/:id',isAuth ,updateLink );
+
+router.delete('/links/:id',isAuth ,deleteLink );
 module.exports = router;

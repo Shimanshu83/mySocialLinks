@@ -7,7 +7,7 @@ var logger = require('morgan');
 const session = require('express-session');
 var passport = require('passport');
 const MongoStore =  require('connect-mongo');
-
+// const methodOverride = require('method-override');
 
 
 var indexRouter = require('./routes/index');
@@ -27,6 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//override the method 
+// app.use(methodOverride('_method'))
 // dotenv
 require("dotenv").config(); 
 
@@ -44,7 +46,7 @@ connectDB();
      resave : false ,
      saveUninitialized : true , 
      cookie :{
-       maxAge : 1000*60*10 *24 //Equals 1 day (1 day * 24 hr/1 day )
+       maxAge : 1000*60*10 *24 *456 //Equals 1 day (1 day * 24 hr/1 day )
      }
    }));
 
