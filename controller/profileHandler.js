@@ -4,7 +4,7 @@ const path = require('path');
 const UserProfileModel = require("../models/userProfile")
 
 const fileStorage = multer.diskStorage({
-    destination: 'uploads', // Destination to store image 
+    destination: 'public/images', // Destination to store image 
     filename: (req, file, cb) => {
         const uniqueName =`${Date.now()}-${Math.round(Math.random() * 1E9 )}${path.extname(file.originalname)}`;
         cb(null, uniqueName)

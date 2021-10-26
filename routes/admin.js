@@ -18,4 +18,5 @@ router.post('/links',isAuth ,createLink );
 router.put('/links/:id',isAuth ,updateLink );
 
 router.delete('/links/:id',isAuth ,deleteLink );
+
 module.exports = router;

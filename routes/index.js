@@ -3,7 +3,7 @@ var express = require('express');
 const passport = require('passport');
 const initialRegisterCheck = require('../controller/initialRegisterCheck');
 const register = require('../controller/register');
-
+const socialLinkController = require('../controller/socialLinkController');
 var router = express.Router();
 
 /* GET home page. */
@@ -24,9 +24,6 @@ router.use('/login-success' , (req , res ) =>{
   return res.send("you are succeeded") ; 
 })
 
-// user page   
-router.get('/:username',() => {
-  
-}); 
+router.get("/:socialLink" ,socialLinkController );
 
 module.exports = router;
