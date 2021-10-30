@@ -12,9 +12,16 @@
     <div class="window">
         <div class="container">
           <div class="profile" >
-            <div class="profile-img">
+            <% if (imgAddresh != null)) { %>
+              <div class="profile-img">
                 <img src="<%= `images/${imgAddresh}` %>" alt="">
             </div>
+            <% } %>
+
+            <% if (imgAddresh == null)) { %>
+             
+            <% } %>
+            
             <h3><%= title %> </h3>
             <% if (description != null) { %>
                 <p class="description">
