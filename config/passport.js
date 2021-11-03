@@ -23,7 +23,7 @@ const verifyCallback = (username , password , done) => {
                 if (!user) { return done(null, false) } //the donw callback function first parm error and second is wheter user exists 
 
                 
-                // Function defined at bottom of app.js
+                // Function defined at bottom of app.j
                 const isValid = validPassword(password, user.password);              
                 if (isValid) {
                     return done(null, user);
