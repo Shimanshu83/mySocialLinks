@@ -52,7 +52,7 @@ connectDB();
 
 
 /**
- * -------------- PASSPORT AUTHENTICATION ----------------
+ * PASSPORT AUTHENTICATION ----------------
  */
  require('./config/passport');
  app.use(passport.initialize());
