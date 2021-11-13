@@ -23,4 +23,8 @@ router.use('/login-success' , (req , res ) =>{
 
 router.get("/:socialLink" ,socialLinkController );
 
+router.get('/' , (req ,res ) =>{
+  return res.send("welcome to the server of my social links ") ; 
+})
+
 module.exports = router;
