@@ -41,7 +41,7 @@ connectDB();
 
 //  const sessionStore = new MongoStore({mongooseConnection : connection , collections : 'sessions'});
  app.use(session({
-  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/mysociallinks' }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_CONNECTION_URL2 }),
      secret : process.env.SALT,
      resave : false ,
      saveUninitialized : true , 

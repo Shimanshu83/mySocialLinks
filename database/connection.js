@@ -6,7 +6,7 @@ var connection ;
 async function connectDB() {
   
     connection = mongoose.connect(
-    process.env.MONGO_CONNECTION_URL,
+    process.env.MONGO_CONNECTION_URL2,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true
