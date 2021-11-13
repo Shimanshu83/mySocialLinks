@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/stylesheets/socialLinkPage.css">
-    <title><%= title %>'s social link pag </title>
+    <title><%= title %>'s social link page </title>
 </head>
 <body>
 
     <div class="window">
         <div class="container">
           <div class="profile" >
-            <% if (imgAddresh != null)) { %>
+            <% if (imgAddresh != null) { %>
               <div class="profile-img">
                 <img src="<%= `images/${imgAddresh}` %>" alt="">
             </div>
             <% } %>
 
-            <% if (imgAddresh == null)) { %>
+            <% if (imgAddresh == null) { %>
              
             <% } %>
             
@@ -34,7 +34,7 @@
           <div class="links">
 
             <% links.forEach(link => { %>
-                <a href="<%= link.link %>" class="button" >  <%= link.name %>  </a>
+                <a href= '<%=link.link%>' class="button" >  <%= link.name %>  </a>
             <% }) %>
             
         

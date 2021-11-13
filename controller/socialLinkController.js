@@ -35,10 +35,9 @@ const socialLinkController = async (req, res, next) =>{
         ...profileOptions,
         links : links
     }
+    console.log(options) ; 
 
-    console.log(options); 
-    return res.render("socialLink" ,options);
-
+    return res.render( 'socialLink.ejs' , options) ;  
 
 }
 
