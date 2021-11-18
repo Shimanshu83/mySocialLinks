@@ -5,7 +5,7 @@ var isAuth = (req , res , next ) => {
     }
     else{
         console.log(req.isAuthenticated())
-        res.status(401).json({msg:'you are not authorized to view this resourc '})
+        res.status(401).json({msg:'you are not authorized to view this resourcess '})
     }
 }
 
