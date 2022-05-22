@@ -8,7 +8,9 @@ const socialLinkController = async (req, res, next) =>{
 
     var user = await userModel.findOne({user_social_link : socialLink})
     if (!user){
+        
         res.status(500).send("user does not exist"); 
+        return ;
     }
 
     var userId = user.id ; 

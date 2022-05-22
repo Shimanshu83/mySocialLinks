@@ -1,6 +1,6 @@
 var express = require('express');
 
-const isAuth = require('../controller/isAuth');
+const isAuth = require('../middleware/isAuthenticated');
 const {profileHandler , fileUpload} = require('../controller/profileHandler');
 const {getLinks ,
     createLink,  

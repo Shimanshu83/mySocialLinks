@@ -8,20 +8,24 @@ const session = require('express-session');
 var passport = require('passport');
 const MongoStore =  require('connect-mongo');
 // const methodOverride = require('method-override');
-
-
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+const { notFound , errorHandler } = require('./middleware/errorMiddleware'); 
 const {connectDB} = require('./database/connection');
 const {connection} = require('./database/connection');
 const { application } = require('express');
+var cors = require('cors')
 
 var app = express();
 
 // view engine 
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -65,11 +69,10 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-//port
+
+app.use(notFound)
+app.use(errorHandler)
+
 
 app.listen(process.env.PORT) ;
 

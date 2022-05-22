@@ -1,38 +1,39 @@
 const linkModel = require('../models/linkModel') ; 
+const asyncHandler = require('express-async-handler')
 
-const getLinks = async (req , res , next)=>{
+const getLinks = asyncHandler(async (req , res , next)=>{
     try{
     const links = await linkModel.find({userId : req.user.id});
-    // the function return empty array if it does not find any data 
     
     const result = links.map(data=> {
         return {id : data.id , name : data.name , link : data.link }
     });
 
     res.status(200).send({
-        success : true,   
+        status : true,   
         totalLink : result.length ,
         data : result   
     });
 
     }
     catch(err){
-        res.status(500).send({err : err})
+        console.error(err);
+        res.status(400); 
+        throw new Error("All Fields are required"); 
     }
 
-}
+})
 
 
 
-const createLink = async (req , res , next) =>{
+const createLink = asyncHandler( async (req , res , next) =>{
     
     const {name , link} = req.body ;  
 
     if (!(typeof name === 'string' && typeof link === 'string')){
-        
-        return res.status(400).send({
-            err : "all fields  are required required"
-        });      
+       
+        res.status(400); 
+        throw new Error("All Fields are required");       
     }
 
     try {
@@ -46,7 +47,7 @@ const createLink = async (req , res , next) =>{
         newLink = await newLink.save();
 
         return res.status(201).send({
-            success : true,
+            status : true,
             data : {
                 id : newLink.id ,
                 name : newLink.name ,
@@ -56,36 +57,43 @@ const createLink = async (req , res , next) =>{
         })
     }
     catch (err) {
-        return res.status(500).send({err}); 
+        console.error(err);
+        res.status(500)
+        throw new Error("Internal Server Error");
     }
-}
+})
 
-const updateLink = async (req , res , next) =>{
-    console.log("i am in update link");
-
+const updateLink = asyncHandler( async (req , res , next) =>{
     const {name , link } = req.body ; 
-    const filter = {id : req.params.id};
+    console.log(req.params.id , 'params')
+    const filter = {_id : req.params.id};
     const update = {
         name : name ,    
         link : link 
     }
     try {
-    const updatedLink = await linkModel.findOneAndUpdate(filter , update , {new : true });
-    res.status(201).send({sucess : true , msg : "successfully updated" , data : {id  :updatedLink.id , name : updatedLink.name , link : updatedLink.link} });
+    const updatedLink = await linkModel.findOneAndUpdate(filter , update );
+    console.log(updatedLink);
+    
+    res.status(201).send({status : true , msg : "successfully updated" , data : {id  :updatedLink._id , name : updatedLink.name , link : updatedLink.link} });
     }
     catch(err){
-        return res.status(500).send({err : "internal server error "})
+        console.error(err);
+        res.status(500); 
+        throw new Error("Internal server error"); 
     }
 
-}
+})
 
 const deleteLink = async (req , res ,next) =>{
     try{
         let deleted = await linkModel.findByIdAndDelete(req.params.id);
-        res.status(201).send({sucess : true , msg : "successfully deleted"});
+        res.status(201).send({status : true , msg : "successfully deleted"});
     }
     catch(err){
-        res.status(500).send({err : "internal server error"})
+        console.error(err);
+        res.status(500); 
+        throw new Error("Internal server error");
     }
 }
 

@@ -7,11 +7,11 @@ const linkSchema = mongoose.Schema({
     },
     name : {
         type : String, 
-        required : true 
+        required : false 
     },
     link : {
         type : String , 
-        required : true , 
+        required : false , 
     }
     
 },{ timestamps: true })
