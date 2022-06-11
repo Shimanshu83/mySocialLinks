@@ -70,7 +70,7 @@ const profileHandler = async(req, res, next) => {
         const update = {
             title: title,
             description: description,
-            imgAddresh: req.file ? .filename
+            imgAddresh: req.file?.filename
         }
         try {
             const updatedLink = await UserProfileModel.findOneAndUpdate(filter, update, { new: true });
@@ -97,7 +97,7 @@ const profileHandler = async(req, res, next) => {
 
         var createdProfile = new UserProfileModel({
             userId_: req.user.id,
-            imgAddresh: req.file ? .filename,
+            imgAddresh: req.file?.filename,
             title: title,
             description: description
         })
