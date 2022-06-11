@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="main-container">
+		<header class="head">
+			<div class="title">
+				<img src="img/devlogo.png" alt="" class="logo">
+        <h1>White Board</h1>
+      </div>
+
+      <div class="tools">
+        
+        <!-- font from font8 icon -->
+  
+        <div class="undo btn" id="undo"><img src="https://img.icons8.com/wired/64/000000/undo.png"/></div>
+        
+        <div class="redo btn" id="redo"><img src="https://img.icons8.com/wired/64/000000/redo.png"/></div>
+        
+        <div class="clear btn" id="clear"><img src="https://www.tutorialspoint.com/whiteboard/images/clear.png"/></div>
+
+      </div>
+  
+   </header>
+
+  
+    
+    <div class="toolbar" id="toolbar">
+
+
+      <!-- slect tool -->
+      <div class="btn tool arrow">
+        <img src="https://img.icons8.com/ios-filled/50/000000/up-right-arrow.png"/>
+
+      </div>
+
+      <!-- background color picker  -->
+
+      <div class="btn tool background-picker">
+        <div class="background-color">
+          <input type="color" onInput="changebg(this)" class="color-picker">
+        </div>
+      </div>
+
+
+      <!-- pencil tool -->
+      
+        <div class="btn tool pencil">
+          <img src="https://img.icons8.com/ios-glyphs/30/000000/pencil--v1.png"/>
+
+          
+
+
+        </div>
+
+       
+        
+
+
+
+      <!-- eraser tool -->
+      <div class="btn tool eraser">
+        <img src="https://img.icons8.com/ios/50/000000/eraser.png"/>
+
+      </div>
+
+
+      <!-- shape tool  -->
+
+      <div class="btn tool shape">
+      <img src="https://www.tutorialspoint.com/whiteboard/images/shape-sm.png" alt="shape tool" >
+      </div>
+
+
+      <!-- text tool -->
+
+
+      <div class="btn tool text">
+        <img src="https://img.icons8.com/ios/50/000000/text.png"/>
+        
+      </div> 
+
+
+    <!-- more tools -->
+
+      <div class="btn tool more-tool">
+        <img src="https://img.icons8.com/material-outlined/24/000000/dots-loading--v4.png"/>
+      </div>
+    
+    </div>
+ 
+
+    <div class="canvas-cont" id="canvas-cont">
+      <canvas id="canvas" >
+
+      </canvas>
+
+    </div>
+
+  </div>
+
+   <!-- code for pencil mini slide  -->
+    <div class="pencil-slide" id="pencil-slide">
+      <div class="triangle"></div>
+        <div class="pencil-opt">
+            <input onInput="draw_color = this.value" type="color" class="color-picker">
+            <input type="range" min="1" max="100" onInput="draw_width = this.value">
+      </div>
+    </div>
+
+         
+ 
+
+  
+  
+  
+  
+  
+  
+  
+  <script src="JS/script.js"></script>
+</body>
+
+</html>

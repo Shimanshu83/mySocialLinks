@@ -31,6 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//  express.static(path.join(__dirname, 'public'))
 //override the method 
 // app.use(methodOverride('_method'))
 // dotenv
@@ -67,12 +68,6 @@ connectDB();
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-
-
-
 app.use(notFound)
 app.use(errorHandler)
-
-
 app.listen(process.env.PORT) ;
-

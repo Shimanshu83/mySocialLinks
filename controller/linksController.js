@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 
 const getLinks = asyncHandler(async (req , res , next)=>{
     try{
-    const links = await linkModel.find({userId : req.user.id});
+    const links = await linkModel.find({userId : req.user.id}).sort({createdAt: 'desc'});
     
     const result = links.map(data=> {
         return {id : data.id , name : data.name , link : data.link }
@@ -74,7 +74,6 @@ const updateLink = asyncHandler( async (req , res , next) =>{
     try {
     const updatedLink = await linkModel.findOneAndUpdate(filter , update );
     console.log(updatedLink);
-    
     res.status(201).send({status : true , msg : "successfully updated" , data : {id  :updatedLink._id , name : updatedLink.name , link : updatedLink.link} });
     }
     catch(err){

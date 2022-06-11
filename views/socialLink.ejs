@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/stylesheets/socialLinkPage.css">
-    <title><%= title %>'s social link page </title>
+    <title>
+        <%= title %>'s social link page </title>
 </head>
+
 <body>
 
     <div class="window">
         <div class="container">
-          <div class="profile" >
-            <% if (imgAddresh != null) { %>
-              <div class="profile-img">
-                <img src="<%= `images/${imgAddresh}` %>" alt="">
+            <div class="profile">
+                <% if (imgAddresh != null) { %>
+                    <div class="profile-img">
+                        <img src="<%= `images/${imgAddresh}` %>" alt="">
+                    </div>
+                    <% } %>
+
+                        <% if (imgAddresh == null) { %>
+
+                            <% } %>
+
+                                <h3>
+                                    <%= title %>
+                                </h3>
+                                <% if (description != null) { %>
+                                    <p class="description">
+                                        <%= description %>
+                                    </p>
+                                    <% } %>
+
+
             </div>
-            <% } %>
+            <div class="links">
 
-            <% if (imgAddresh == null) { %>
-             
-            <% } %>
-            
-            <h3><%= title %> </h3>
-            <% if (description != null) { %>
-                <p class="description">
-                    <%= description %> 
-                </p>      
-            <% } %>
-             
-            
-          </div>
-          <div class="links">
+                <% links.forEach(link => { %>
+                    <a href='<%=link.link%>' class="button">
+                        <%= link.name %>
+                    </a>
+                    <% }) %>
 
-            <% links.forEach(link => { %>
-                <a href= '<%=link.link%>' class="button" >  <%= link.name %>  </a>
-            <% }) %>
-            
-        
-            
-          </div>
-          <div class="logo">
-            <h2>My Links</h2>
-          </div>
+
+
+            </div>
+            <div class="logo">
+                <h2>My Links</h2>
+            </div>
         </div>
-      </div>
+    </div>
 
 </body>
+
 </html>
